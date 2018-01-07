@@ -15,6 +15,7 @@ class Initializer
     Dir.mkdir ".rgit"
     Dir.mkdir ".rgit/objects"
     Dir.mkdir ".rgit/refs"
+    File.open(".rgit/index", "w") {}
   end
 
   def storage_directory_exists?
