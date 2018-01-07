@@ -1,5 +1,5 @@
-require_relative 'init'
-require 'pry'
+require_relative "setup"
+
 command = ARGV[0].to_sym
 arguments = ARGV[1..-1]
 

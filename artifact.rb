@@ -1,7 +1,3 @@
-require 'zlib'
-require 'json'
-require 'digest'
-
 class Artifact
   class InvalidArtifact < StandardError; end
 
