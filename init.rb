@@ -1,7 +1,7 @@
 class Initializer
   class AlreadyInitializedError < StandardError; end
 
-  def create_repository
+  def run
     already_init_error if storage_directory_exists?
     write_filetree
     true
