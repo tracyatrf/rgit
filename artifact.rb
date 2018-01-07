@@ -65,7 +65,7 @@ class Artifact
 
   def validate(compressed_content, raw_content)
     raise InvalidArtifact "No file contents available" unless (compressed_content || raw_content)
-    raise InvalidArtifact "Cannot initialize with both compressed and uncompressed contents" if (compressed_content && raw_content)
+    raise InvalidArtifact "Cannot initialize with this data" if (compressed_content && raw_content)
   end
 
   def file_path
