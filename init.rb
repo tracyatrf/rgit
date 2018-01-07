@@ -13,6 +13,8 @@ class Initializer
 
   def write_filetree
     Dir.mkdir ".rgit"
+    Dir.mkdir ".rgit/objects"
+    Dir.mkdir ".rgit/refs"
   end
 
   def storage_directory_exists?
