@@ -1,3 +1,4 @@
+require "json"
 class Initializer
   class AlreadyInitializedError < StandardError; end
 
@@ -15,7 +16,7 @@ class Initializer
     Dir.mkdir ".rgit"
     Dir.mkdir ".rgit/objects"
     Dir.mkdir ".rgit/refs"
-    File.open(".rgit/index", "w") {}
+    File.open(".rgit/index", "w") { |f| f.write({ files: nil }.to_json) }
   end
 
   def storage_directory_exists?
