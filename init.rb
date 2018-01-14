@@ -3,7 +3,7 @@ class Initializer
 
   def run
     already_init_error if storage_directory_exists?
-    write_filetree
+    write_storage_directory
     true
   end
 
@@ -11,15 +11,15 @@ class Initializer
     raise AlreadyInitializedError "The storage directory already exists"
   end
 
-  def write_filetree
-    Dir.mkdir ".rgit"
-    Dir.mkdir ".rgit/objects"
-    Dir.mkdir ".rgit/refs"
-    File.open(".rgit/index", "w") { |f| f.write({ files: nil }.to_json) }
+  def write_storage_directory
+    Dir.mkdir RGIT_DIR
+    Dir.mkdir "#{RGIT_DIR}/objects"
+    Dir.mkdir "#{RGIT_DIR}/refs"
+    File.write("index.yml", "")
   end
 
   def storage_directory_exists?
-    directory_exists?('.rgit')
+    directory_exists?(RGIT_DIR)
   end
 
   def directory_exists?(directory)

@@ -9,7 +9,7 @@ class Stage
 
   def create_artifact_from_file(file)
     Artifact.new(
-      artifact_type: :file,
+      type: :file,
       raw_content: file
     )
   end

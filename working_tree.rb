@@ -4,7 +4,7 @@ class WorkingTree
   end
 
   def filenames
-    @files
+    @filenames
   end
 
   def files
