@@ -3,26 +3,19 @@ class Stage
     @working_tree = WorkingTree.new
   end
 
+  def index
+    @index ||= Index.load
+  end
+
   def working_tree_files
-    working_tree.files
+    working_tree.hash_tree
   end
 
-  def create_artifact_from_file(file)
-    Artifact.new(
-      type: :file,
-      raw_content: file
-    )
+  def difference_vs_working_tree
+    working_tree_files - index.files
   end
 
-  def create_artifacts_from_working_tree
-    working_tree_files.map do |file|
-      create_artifact_from_file(file)
-    end
-  end
-
-  def read_index
-    JSON.parse(File.read(".rgit/index"))
+  def difference_vs_repo
+    #no op currently
   end
 end
-
-

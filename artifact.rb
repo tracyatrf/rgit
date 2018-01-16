@@ -40,7 +40,7 @@ class Artifact
   end
 
   def generate_sha
-    @sha ||= Digest::SHA1.hexdigest(raw_content)
+    @sha ||= Util::Hasher.generate_sha(raw_content) 
   end
 
   def file_path

@@ -15,7 +15,7 @@ class Initializer
     Dir.mkdir RGIT_DIR
     Dir.mkdir "#{RGIT_DIR}/objects"
     Dir.mkdir "#{RGIT_DIR}/refs"
-    File.write("index.yml", "")
+    FileUtils.cp("templates/index.yml","#{RGIT_DIR}/index.yml")
   end
 
   def storage_directory_exists?

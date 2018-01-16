@@ -1,12 +1,15 @@
+#/bin/ruby
 require_relative "setup"
 
 command = ARGV[0].to_sym
 arguments = ARGV[1..-1]
 
-valid_commands = [:init]
-raise "Invalid Command" unless valid_commands.include? command
 
 command_map = {
-  init: Initializer
+  init: Initializer,
+  add: Adder,
+  status: Status,
+  commit: Committer
 }
+raise "Invalid Command" unless command_map.keys.include? command
 command_map[command].new.run(*arguments)
