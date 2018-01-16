@@ -5,6 +5,12 @@ class Status
 
   def run
     puts "these files have changed:"
-    puts stage.difference_vs_working_tree.join("\n")
+    puts stage.changed_files.join("\n")
+
+    puts "these files have are new:"
+    puts stage.new_files.join("\n")
+
+    puts "these files have are deleted:"
+    puts stage.deleted_files.join("\n")
   end
 end

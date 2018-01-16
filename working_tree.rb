@@ -1,8 +1,12 @@
 class WorkingTree
   attr_reader :filenames
 
-  def initialize
-    @filenames = Dir['**/*'].reject {|fn| File.directory?(fn) }
+  def initialize(filenames = files_from_working_directory)
+    @filenames = filenames
+  end
+
+  def files_from_working_directory
+    Dir['**/*'].reject {|fn| File.directory?(fn) }
   end
 
   def files

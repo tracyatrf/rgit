@@ -15,6 +15,8 @@ class Index
   end
 
   def add_file(file_hash)
+    # we need to delete the old reference first
+    @files = files.reject { |file| file[:name] == file_hash[:name] }
     files << file_hash
   end
 

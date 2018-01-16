@@ -1,0 +1,7 @@
+---
+- :name: some_file
+  :sha: aaaaaaaa
+- :name: some_other_file
+  :sha: bbbbbbbb
+- :sha: ccc
+  :name: added_file
