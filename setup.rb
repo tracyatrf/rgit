@@ -15,6 +15,7 @@ require_relative 'artifact_persistable'
 
 require_relative 'blob'
 require_relative 'working_tree'
+require_relative 'tree_builder'
 require_relative 'stage'
 require_relative 'init'
 
