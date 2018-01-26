@@ -20,10 +20,6 @@ class Index
     files << file_hash
   end
 
-  def reload!
-    @files = YAML.load_file(INDEX_FILE_PATH)
-  end
-
   def write
     File.write(INDEX_FILE_PATH, files.to_yaml)
   end

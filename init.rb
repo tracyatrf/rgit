@@ -16,6 +16,7 @@ class Initializer
     Dir.mkdir "#{RGIT_DIR}/objects"
     Dir.mkdir "#{RGIT_DIR}/refs"
     FileUtils.cp("templates/index.yml","#{RGIT_DIR}/index.yml")
+    FileUtils.touch("#{RGIT_DIR}/HEAD")
   end
 
   def storage_directory_exists?

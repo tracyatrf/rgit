@@ -10,6 +10,13 @@ class Artifact
       new(raw_content: raw_content, type: type).save
     end
 
+    def exists?(sha)
+      begin
+        File.read(file_path(sha)) && true
+      rescue
+        false
+      end
+    end
   end
 
   attr_reader :sha

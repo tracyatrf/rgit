@@ -8,23 +8,15 @@ class TreeBuilder
     private
 
     def reduce_tree(files)
-      #group by filename
       grouped = group_by_filename(files) 
-
-      #fold paths #
-      obj = grouped.each_with_object({trees:[], files:[]}) do |(key, values), memo|
-        if key == "."
-          memo[:files] += values
+      subtree = grouped.each_with_object({trees:[], files:[]}) do |(key, values), memo|
+        if key == "." then memo[:files] += values
         else
-          reduced_files = values.map do |file|
-            file[:name] = file[:name].split("/")[1..-1].join("/")
-            file
-          end
-          subtree = reduce_tree(reduced_files)
-          memo[:trees] << { name: key, sha: subtree }
+          reduced_files = values.each { |file| file[:name] = file[:name].rpartition("/").first }
+          memo[:trees] << { name: key, sha: reduce_tree(reduced_files) }
         end
       end
-      Artifact.create(type: :tree, raw_content: obj.to_yaml).sha
+      Artifact.create(type: :tree, raw_content: subtree.to_yaml).sha
     end
 
     def group_by_filename(files)
