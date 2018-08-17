@@ -4,6 +4,10 @@ class Head
     def sha
       new.sha
     end
+
+    def branch
+      new.branch
+    end
   end
 
   attr_reader :branch
@@ -12,11 +16,11 @@ class Head
     @branch = branch || Branch.find(read_head_file)
   end
 
-  def read_head_file
-    File.read("#{RGIT_DIR}/HEAD")
+  def read_head_file(filename="#{RGIT_DIR}/HEAD")
+    File.file?(filename) ? File.read(filename).chomp : raise("You are in a detatched head state")
   end
 
   def sha
-    branch.current_commit
+    branch.commit
   end
 end

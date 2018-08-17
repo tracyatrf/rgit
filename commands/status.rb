@@ -4,13 +4,17 @@ class Status
   end
 
   def run
+    puts "On branch #{Head.branch.name}"
+    puts "these files are ready for commit:"
+    puts "noop currently \n"
+
     puts "these files have changed:"
     puts stage.changed_files.join("\n")
 
     puts "these files have are new:"
     puts stage.new_files.join("\n")
 
-    puts "these files have are deleted:"
+    puts "these files have been deleted:"
     puts stage.deleted_files.join("\n")
   end
 end

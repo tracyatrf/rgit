@@ -6,6 +6,10 @@ class Artifact
       "#{RGIT_DIR}/objects/%s" % sha
     end
 
+    def read(sha)
+      File.read(file_path(sha)) 
+    end
+
     def create(type:, raw_content:)
       new(raw_content: raw_content, type: type).save
     end
@@ -28,9 +32,7 @@ class Artifact
   end
 
   def save
-    File.open(file_path, "w") do |file|
-      file.write(raw_content)
-    end
+    File.open(file_path, "w") { |file| file.write(raw_content) }
     self
   end
 
@@ -47,7 +49,7 @@ class Artifact
   end
 
   def generate_sha
-    @sha ||= Util::Hasher.generate_sha(raw_content) 
+    @sha ||= Util::Hasher.generate_sha(raw_content)
   end
 
   def file_path

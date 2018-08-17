@@ -14,6 +14,8 @@ require_relative 'artifact'
 require_relative 'artifact_persistable'
 
 require_relative 'blob'
+require_relative 'head'
+require_relative 'branch'
 require_relative 'working_tree'
 require_relative 'tree_builder'
 require_relative 'stage'
