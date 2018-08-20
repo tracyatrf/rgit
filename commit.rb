@@ -1,30 +1,28 @@
 class Commit
-  include ArtifactPesistable
+  include ArtifactPersistable
+  attr_reader :tree, :parent, :message
 
   class << self
-    def create(root_tree: root_tree)
-      sha = new(root_tree: root_tree).persist.sha
-      load(sha)
+    def create(tree:, parent: nil, message:)
+      new(tree: tree, parent: parent, message: message).persist
     end
 
-    def load(sha)
-
+    def extract_data(file_contents)
+      YAML.load(file_contents)
     end
   end
 
-  def initialize(root_tree:, sha: nil)
-    @root_tree = root_tree
+  def initialize(tree:, sha: nil, parent: nil, message:)
+    @tree = tree
+    @parent = parent
+    @message = message
+  end
+ 
+  def to_h
+    { tree: tree, parent: parent, message: message, sha: sha }
   end
 
-  def content
-    { tree: root_tree, type: :commit }.to_yaml
-  end
-
-  def root_tree
-    @root_tree
-  end
-
-  def sha
-
+  def raw_content
+    to_h.except(:sha).to_yaml
   end
 end

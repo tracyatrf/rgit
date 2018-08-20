@@ -22,7 +22,7 @@ RSpec.describe Artifact do
       it "creates a file with the correct filename" do
         expect(Pathname.new("#{RGIT_DIR}/objects/#{artifact.sha}")).to exist
       end
-      
+
       it "creates a file with the correct content" do
         expect(File.read("#{RGIT_DIR}/objects/#{artifact.sha}")).to eq "hello world"
       end

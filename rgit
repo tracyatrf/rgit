@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require_relative "setup"
 
+binding.pry
 command = ARGV[0].to_sym
 arguments = ARGV[1..-1]
 
