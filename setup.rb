@@ -9,6 +9,7 @@ require 'fileutils'
 RGIT_DIR = ENV["TEST_ENV"] ? "spec/sandbox" : ".rgit"
 
 require 'active_support/core_ext/hash'
+require 'active_support/core_ext/string'
 require_relative 'util/hasher'
 require_relative 'index'
 require_relative 'artifact'

@@ -1,13 +1,13 @@
 module ArtifactPersistable
   #requires included class to implement type and content
   attr_accessor :sha
-  
+
   def self.included(base)
     base.extend(ClassMethods)
   end
 
   def type
-    self.class.name
+    self.class.name.underscore
   end
 
   def persist
@@ -16,7 +16,6 @@ module ArtifactPersistable
   end
 
   module ClassMethods
-
     def load(sha)
       new(**extract_data(read_artifact(sha)), sha: sha)
     end

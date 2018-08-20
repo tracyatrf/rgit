@@ -17,7 +17,7 @@ class Commit
     @parent = parent
     @message = message
   end
- 
+
   def to_h
     { tree: tree, parent: parent, message: message, sha: sha }
   end
