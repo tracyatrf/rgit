@@ -16,6 +16,7 @@ class Commit
     @tree = tree
     @parent = parent
     @message = message
+    @sha = sha
   end
 
   def to_h

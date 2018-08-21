@@ -4,7 +4,7 @@ RSpec.describe Index do
   end
 
   it "can be created with a file" do
-    expect( described_class.new).to be_a Index
+    expect(described_class.new).to be_a Index
   end
 
   context "load" do

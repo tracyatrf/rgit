@@ -7,7 +7,9 @@ class Artifact
     end
 
     def read(sha)
-      File.read(file_path(sha)) 
+      File.read(file_path(sha))
+        .partition(?:)
+        .tap{ |a| break { type: a.first, raw_content: a.last } }
     end
 
     def create(type:, raw_content:)
@@ -23,7 +25,7 @@ class Artifact
     end
   end
 
-  attr_reader :sha
+  attr_reader :sha, :type
 
   def initialize(type:, raw_content:)
     @raw_content = raw_content
@@ -32,8 +34,12 @@ class Artifact
   end
 
   def save
-    File.open(file_path, "w") { |file| file.write(raw_content) }
+    File.open(file_path, "w") { |file| file.write(write_content) }
     self
+  end
+
+  def write_content
+    "#{type}:#{raw_content}"
   end
 
   def delete

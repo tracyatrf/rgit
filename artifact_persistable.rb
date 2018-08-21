@@ -17,7 +17,7 @@ module ArtifactPersistable
 
   module ClassMethods
     def load(sha)
-      new(**extract_data(read_artifact(sha)), sha: sha)
+      new(**extract_data(read_artifact(sha)[:raw_content]), sha: sha)
     end
 
     def extract_data(artifact)

@@ -15,6 +15,7 @@ class Tree
   def initialize(trees:, sha: nil, files:)
     @trees = trees
     @files = files
+    
   end
 
   def to_h

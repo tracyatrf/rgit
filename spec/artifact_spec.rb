@@ -24,7 +24,7 @@ RSpec.describe Artifact do
       end
 
       it "creates a file with the correct content" do
-        expect(File.read("#{RGIT_DIR}/objects/#{artifact.sha}")).to eq "hello world"
+        expect(File.read("#{RGIT_DIR}/objects/#{artifact.sha}")).to eq "blob:hello world"
       end
     end
   end

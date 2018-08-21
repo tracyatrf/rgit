@@ -1,6 +1,14 @@
 class TreeBuilder
   class << self
 
+    def recursive_build_tree_from_sha(sha)
+      recursive_build_tree(Tree.load(sha))
+    end
+
+    def recursive_build_tree(tree)
+      Tree.new(sha: sha, trees: tree.trees.map{ |t| recursive_build_tree(t[:sha]) }, files: tree.files )
+    end
+
     def create_trees(files)
       { name: "root", sha: reduce_tree(files) }
     end
@@ -22,6 +30,7 @@ class TreeBuilder
     def group_by_filename(files)
       files.group_by{|f| File.dirname(f[:name]).split("/").first}
     end
+
   end
 end
 
