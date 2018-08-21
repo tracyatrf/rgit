@@ -27,4 +27,3 @@ class Initializer
     File.directory?(directory)
   end
 end
-

@@ -1,7 +1,7 @@
 class Branch
   class << self
     def find(name)
-      commit = File.read("#{RGIT_DIR}/refs/#{name}")
+      commit = File.read("#{RGIT_DIR}/refs/#{name}").tap { |f| break nil if f.empty? }
       new(name: name, commit: commit)
     end
 

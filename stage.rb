@@ -41,8 +41,7 @@ class Stage
     end
   end
 
-
   def difference_vs_repo
-    #no op currently, maybe ever
+    #no op currently, going to need this to view "staged" files
   end
 end

@@ -19,6 +19,10 @@ class Commit
     @sha = sha
   end
 
+  def load_parent
+    self.class.load(parent) if parent
+  end
+
   def to_h
     { tree: tree, parent: parent, message: message, sha: sha }
   end

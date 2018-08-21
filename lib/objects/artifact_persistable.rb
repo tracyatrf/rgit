@@ -11,8 +11,8 @@ module ArtifactPersistable
   end
 
   def persist
-    self.sha = Artifact.create(type: type, raw_content: raw_content).sha
-    self
+    # hmmmph, this isn't very "functional"
+    tap { |x| x.sha = Artifact.create(type: type, raw_content: raw_content).sha }
   end
 
   module ClassMethods

@@ -24,4 +24,3 @@ class Index
     File.write(INDEX_FILE_PATH, files.to_yaml)
   end
 end
-
