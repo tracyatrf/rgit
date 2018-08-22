@@ -25,7 +25,7 @@ module ArtifactPersistable
     end
 
     def read_artifact(sha)
-      raise "No sha provided or artifact does not exist" unless sha && Artifact.exists?(sha)
+      raise "No sha provided or artifact does not exist #{self.name} -- #{sha}" unless sha && Artifact.exists?(sha)
       Artifact.read(sha)
     end
   end

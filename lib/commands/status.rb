@@ -6,7 +6,7 @@ class Status
   def run
     puts "On branch #{Head.branch.name}"
     puts "these files are ready for commit:"
-    puts "noop currently \n"
+    puts stage.staged_files.join("\n")
 
     puts "these files have changed:"
     puts stage.changed_files.join("\n")

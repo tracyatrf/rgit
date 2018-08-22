@@ -33,6 +33,11 @@ class Stage
     index_files.map{|f| f[:name]} - working_tree_files.map{|f| f[:name]}
   end
 
+  def staged_files
+    #diffence vs repo
+    (index_files - repo_files).map{|f| f[:name]}
+  end
+
   private
 
   def find_matching_index_file(file)
@@ -41,7 +46,7 @@ class Stage
     end
   end
 
-  def difference_vs_repo
-    #no op currently, going to need this to view "staged" files
+  def repo_files(commit=Commit.load(Head.sha))
+    TreeBuilder.recursive_load_files(Tree.load(commit.tree))
   end
 end
